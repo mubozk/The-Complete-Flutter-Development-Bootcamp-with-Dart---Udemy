@@ -97,7 +97,10 @@ class _QuizzPageState extends State<QuizzPage> {
               Icons.check,
               color: Colors.green,
             ),
-            Icon(Icons.p)
+            Icon(
+              Icons.close,
+              color: Colors.red,
+            )
           ],
         )
         //TODO: add row for score keeper

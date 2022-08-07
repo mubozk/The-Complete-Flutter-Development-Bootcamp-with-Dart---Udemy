@@ -28,6 +28,8 @@ class QuizzPage extends StatefulWidget {
 }
 
 class _QuizzPageState extends State<QuizzPage> {
+  List<Icon> scores = [];
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -49,50 +51,56 @@ class _QuizzPageState extends State<QuizzPage> {
           ),
           flex: 5,
         ),
-        Row(
-          children: [
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Container(
-                  color: Colors.green,
-                  child: GestureDetector(
-                    child: Text(
-                      'True',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    onTap: () {
-                      //The user picked true.
-                    },
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(15),
+            child: Container(
+              color: Colors.green,
+              child: GestureDetector(
+                child: Text(
+                  'True',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
                   ),
                 ),
+                onTap: () {
+                  //The user picked true.
+                },
               ),
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.all(15),
-                child: Container(
-                  color: Colors.red,
-                  child: GestureDetector(
-                    child: Text(
-                      'False',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 20.0,
-                      ),
-                    ),
-                    onTap: () {
-                      //The user picked true.
-                    },
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
+        Expanded(
+          child: Padding(
+            padding: EdgeInsets.all(15),
+            child: Container(
+              color: Colors.red,
+              child: GestureDetector(
+                child: Text(
+                  'False',
+                  style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 20.0,
+                  ),
+                ),
+                onTap: () {
+                  //The user picked true.
+                },
+              ),
+            ),
+          ),
+        ),
+        Row(
+          children: <Widget>[
+            Icon(
+              Icons.check,
+              color: Colors.green,
+            ),
+            Icon(Icons.p)
+          ],
+        )
+        //TODO: add row for score keeper
       ],
     );
   }

@@ -48,8 +48,8 @@ class _BallState extends State<Ball> {
     return Center(
       child: Container(
         child: Expanded(
-          child: FlatButton(
-            onPressed: () {
+          child: GestureDetector(
+            onTap: () {
               randomize();
             },
             child: Image.asset('images/ball$wizardsAnswer.png'),

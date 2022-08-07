@@ -40,16 +40,16 @@ class _DicePageState extends State<DicePage> {
         children: <Widget>[
           Expanded(
             // flex: 1,
-            child: FlatButton(
-                onPressed: () {
+            child: GestureDetector(
+                onTap: () {
                   randomize();
                 },
                 child: Image.asset('images/dice$leftDiceNumber.png')),
           ),
           Expanded(
             // flex: 1,
-            child: FlatButton(
-                onPressed: () {
+            child: GestureDetector(
+                onTap: () {
                   randomize();
                 },
                 child: Image.asset('images/dice$rightDiceNumber.png')),

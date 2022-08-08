@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:quizzler_flutte/question.dart';
 
 void main() {
   runApp(const Quizzler());
@@ -28,7 +29,19 @@ class QuizzPage extends StatefulWidget {
 }
 
 class _QuizzPageState extends State<QuizzPage> {
-  List<Icon> scores = [];
+  List<String> questionsOnGo = [
+    'You can lead a cow down stairs but not up stairs',
+    'Approximately one quarter of human bones are in the feet',
+    'A slug\'s blood is green',
+  ];
+  List<bool> answers = [false, true, true];
+  List<Icon> scoreKeeper = [];
+
+  int questionNumber = 0;
+
+  Question q2 = Question.second(3);
+
+  // Question q1 = (q =  'You can lead a cow down stairs but not up stairs', a = false);
 
   @override
   Widget build(BuildContext context) {
@@ -65,7 +78,16 @@ class _QuizzPageState extends State<QuizzPage> {
                   ),
                 ),
                 onTap: () {
-                  //The user picked true.
+                  bool correctAnswer = answers[questionNumber];
+                  if (correctAnswer == true) {
+                    print('user got it right');
+                  } else {
+                    print('user got it wrong');
+                  }
+
+                  setState(() {
+                    questionNumber++;
+                  });
                 },
               ),
             ),
@@ -85,7 +107,16 @@ class _QuizzPageState extends State<QuizzPage> {
                   ),
                 ),
                 onTap: () {
-                  //The user picked true.
+                  bool correctAnswer = answers[questionNumber];
+                  if (correctAnswer == false) {
+                    print('user got it right');
+                  } else {
+                    print('user got it wrong');
+                  }
+
+                  setState(() {
+                    questionNumber++;
+                  });
                 },
               ),
             ),

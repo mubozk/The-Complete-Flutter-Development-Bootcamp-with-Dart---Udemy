@@ -9,14 +9,15 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$noteNo.wav');
   }
 
-  Expanded buildKey(Color col, int noteNo) {
+  Expanded buildKey(int index) {
     return Expanded(
       child: Container(
         child: GestureDetector(
           onTap: () {
-            playSound(noteNo);
+            playSound(index);
           },
         ),
+        color: Colors.blueGrey[index * 100],
       ),
     );
   }
@@ -28,32 +29,7 @@ class XylophoneApp extends StatelessWidget {
         body: SafeArea(
           child: Column(
             children: <Widget>[
-              buildKey(Colors.blueGrey.shade100, 1),
-              buildKey(Colors.blueGrey.shade200, 2),
-              buildKey(Colors.blueGrey.shade300, 3),
-              buildKey(Colors.blueGrey.shade400, 4),
-              buildKey(Colors.blueGrey.shade500, 5),
-              buildKey(Colors.blueGrey.shade600, 6),
-              buildKey(Colors.blueGrey.shade700, 7),
-
-              // for (var i = 1; i<=7; i+=1 ) {
-              // buildKey(1)
-              // }
-
-              /*
-                Expanded buildKey(int noteNo) {
-                  return Expanded(
-                    child: Container(
-                     child: GestureDetector(
-                        onTap: () {
-                          playSound(noteNo);
-                        },
-                        color: Colors.blueGrey.shade'$noteNo'00,
-                      ),
-                    ),
-                 );
-                }
-               */
+              for (var i = 1; i <= 7; i++) buildKey(i),
             ],
           ),
         ),

@@ -16,6 +16,18 @@ class Quizzler extends StatelessWidget {
     return MaterialApp(
         home: Scaffold(
       backgroundColor: Colors.grey.shade900,
+      appBar: AppBar(
+        title: Text(
+          'Quizzler',
+          style: TextStyle(
+            color: Colors.black,
+            fontSize: 40,
+            fontFamily: 'Inspiration',
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        backgroundColor: Colors.yellow,
+      ),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 10),
         child: QuizzPage(),
@@ -63,29 +75,26 @@ class _QuizzPageState extends State<QuizzPage> {
           ],
         ).show();
 
-        quizBrain.reset();
         scoreKeeper = [];
+        quizBrain.reset();
       }
-      //TODO: Step 4 - Use IF/ELSE to check if we've reached the end of the quiz. If true, execute Part A, B, C, D.
-      //TODO: Step 4 Part A - show an alert using rFlutter_alert (remember to read the docs for the package!)
-      //HINT! Step 4 Part B is in the quiz_brain.dart
-      //TODO: Step 4 Part C - reset the questionNumber,
-      //TODO: Step 4 Part D - empty out the scoreKeeper.
 
-      //TODO: Step 5 - If we've not reached the end, ELSE do the answer checking steps below 👇
       bool correctAnswer = quizBrain.getQuestionAnswer();
+
       if (currentAnswer == correctAnswer) {
         print('user got it right');
+
         scoreKeeper.add(Icon(
           Icons.check,
           color: Colors.green,
         ));
       } else {
+        print('user got it wrong');
+
         scoreKeeper.add(Icon(
           Icons.close,
           color: Colors.red,
         ));
-        print('user got it wrong');
       }
 
       quizBrain.nextQuestion();
@@ -158,7 +167,6 @@ class _QuizzPageState extends State<QuizzPage> {
             children: scoreKeeper,
           ),
         )
-        //TODO: add row for score keeper
       ],
     );
   }

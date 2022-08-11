@@ -12,11 +12,8 @@ class InputPage extends StatefulWidget {
 enum Gender { male, female }
 
 class _InputPageState extends State<InputPage> {
-  Color? maleCardColour;
-
-  Color? femaleCardColour;
-
   Gender? selectedGender;
+  int height = 170;
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +35,8 @@ class _InputPageState extends State<InputPage> {
                       });
                     },
                     colour: selectedGender == Gender.male
-                        ? maleCardColour = kActiveCardColour
-                        : maleCardColour = kInactiveCardColour,
+                        ? kActiveCardColour
+                        : kInactiveCardColour,
                     cardChild: (IconContent(
                       icon: Icon(FontAwesomeIcons.mars),
                       label: 'MALE',
@@ -54,8 +51,8 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   colour: selectedGender == Gender.female
-                      ? femaleCardColour = kActiveCardColour
-                      : femaleCardColour = kInactiveCardColour,
+                      ? kActiveCardColour
+                      : kInactiveCardColour,
                   cardChild: IconContent(
                     icon: Icon(FontAwesomeIcons.venus),
                     label: 'FEMALE',
@@ -65,25 +62,53 @@ class _InputPageState extends State<InputPage> {
             ),
           ),
           Expanded(
-              child: ReusableCard(
-            colour: kInactiveCardColour,
-            cardChild: (Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: <Widget>[
-                Text('HEIGHT',style: kLabelTextStyle,),
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  textBaseline: TextBaseline.alphabetic,
-                  children: <Widget>[
-                    Text('180',
-                        style: kNumberTextStyle),
-                    Text('cm',style: kLabelTextStyle,)
-                  ],
-                )
-              ],
-            )),
-          )),
+            child: ReusableCard(
+              colour: kInactiveCardColour,
+              cardChild: (Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'HEIGHT',
+                    style: kLabelTextStyle,
+                  ),
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: <Widget>[
+                      Text(height.toString(), style: kNumberTextStyle),
+                      Text(
+                        'cm',
+                        style: kLabelTextStyle,
+                      )
+                    ],
+                  ),
+                  SliderTheme(
+                    data: SliderTheme.of(context).copyWith(
+                      thumbShape:
+                          (RoundSliderThumbShape(enabledThumbRadius: 15)),
+                      overlayShape: RoundSliderOverlayShape(overlayRadius: 30),
+                      thumbColor: Color(0xFFEB1555),
+                      overlayColor: Color(0x29eb1555),
+                      activeTrackColor: Color(0xFFEB1555),
+                    ),
+                    child: Slider(
+                      value: height.toDouble(),
+                      min: 110,
+                      max: 230,
+                      inactiveColor: Color(0xFF8D8E98),
+                      onChanged: (double newValue) {
+                        setState(() {
+                          height = newValue.round();
+                        });
+                        print(newValue);
+                      },
+                    ),
+                  ),
+                ],
+              )),
+            ),
+          ),
           Expanded(
             child: Row(
               children: <Widget>[

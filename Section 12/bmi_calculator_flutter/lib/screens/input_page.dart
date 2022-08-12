@@ -6,6 +6,7 @@ import 'package:bmi_calculator_flutter/components/reusable_card.dart';
 import 'package:bmi_calculator_flutter/constants.dart';
 import 'package:bmi_calculator_flutter/components/bottom_button.dart';
 import 'package:bmi_calculator_flutter/components/adjustable_icon_button.dart';
+import 'package:bmi_calculator_flutter/calculator_brain.dart';
 
 class InputPage extends StatefulWidget {
   @override
@@ -209,10 +210,17 @@ class _InputPageState extends State<InputPage> {
           BottomButton(
             buttonTitle: 'CALCULATE',
             onTap: () {
+              CalculatorBrain calc =
+                  CalculatorBrain(height: height, weight: weight);
+
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => ResultsPage(),
+                  builder: (context) => ResultsPage(
+                    bmiResult: calc.calculateBMI(),
+                    resultText: calc.getResult(),
+                    interpretation: calc.getInterpretation(),
+                  ),
                 ),
               );
             },
@@ -222,30 +230,3 @@ class _InputPageState extends State<InputPage> {
     );
   }
 }
-/*
-* () {
-        Navigator.pushNamed(context, 'ResultsPage');
-      },*/
-
-
-
-/*
-// BEFORE TERNARY OPERATORS
-void updateColour(Gender selectedGender) {
-
-  if (selectedGender == Gender.male) {
-    if (maleCardColour == activeCardColour) ;
-    maleCardColour = activeCardColour;
-    femaleCardColour = inactiveCardColour;
-  } else {
-    maleCardColour = inactiveCardColour;
-  }
-  if (selectedGender == Gender.female) {
-    if (femaleCardColour == activeCardColour) ;
-    femaleCardColour = activeCardColour;
-    maleCardColour = inactiveCardColour;
-  } else {
-    femaleCardColour = inactiveCardColour;
-  }
-}
- */

@@ -3,19 +3,20 @@ import 'package:clima_flutter/utilities/constants.dart';
 import 'package:clima_flutter/services/location.dart';
 
 class WeatherModel {
-  
   Future<dynamic> getCityWeather(String cityName) async {
-    NetworkHelper networkHelper = NetworkHelper(url:  '$kOpenWeatherMapURL?q=$cityName&appid=$kApiKey&units=metric');
-        var weatherData = await networkHelper.getData();
+    NetworkHelper networkHelper = NetworkHelper(
+        url: '$kOpenWeatherMapURL?q=$cityName&appid=$kApiKey&units=metric');
+    var weatherData = await networkHelper.getData();
     return weatherData;
-
   }
 
   Future<dynamic> getLocationWeather() async {
     Location location = Location();
     await location.getCurrentLocation();
 
-    NetworkHelper networkHelper = NetworkHelper(url: '$kOpenWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$kApiKey&units=metric');
+    NetworkHelper networkHelper = NetworkHelper(
+        url:
+            '$kOpenWeatherMapURL?lat=${location.latitude}&lon=${location.longitude}&appid=$kApiKey&units=metric');
 
     var weatherData = await networkHelper.getData();
 

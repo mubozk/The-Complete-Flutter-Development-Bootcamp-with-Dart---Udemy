@@ -13,7 +13,9 @@ class LocationScreen extends StatefulWidget {
 }
 
 class _LocationScreenState extends State<LocationScreen> {
+  // instance of weather class
   WeatherModel weather = WeatherModel();
+  // I get null error if I dont define theese properties
   int temperature = 0;
   String weatherIcon = ' ';
   String cityName = ' ';
@@ -26,6 +28,7 @@ class _LocationScreenState extends State<LocationScreen> {
     updateUI(widget.locationWeather);
   }
 
+// using parsed data in here
   void updateUI(dynamic weatherData) {
     setState(() {
       if (weatherData == null) {
@@ -65,6 +68,7 @@ class _LocationScreenState extends State<LocationScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
+                  // currnet location updates in this button ->
                   FlatButton(
                     onPressed: () async {
                       var weatherData = await weather.getLocationWeather();

@@ -20,7 +20,6 @@ class _PriceScreenState extends State<PriceScreen> {
       );
       dropdownItems.add(newItem);
     }
-
     return DropdownButton<String>(
       value: selectedCurrency,
       items: dropdownItems,
@@ -38,7 +37,6 @@ class _PriceScreenState extends State<PriceScreen> {
     for (String currency in currenciesList) {
       pickerItems.add(Text(currency));
     }
-
     return CupertinoPicker(
       backgroundColor: Colors.lightBlue,
       itemExtent: 32.0,

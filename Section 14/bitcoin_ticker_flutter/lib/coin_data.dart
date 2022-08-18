@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
 
 const List<String> currenciesList = [
@@ -38,8 +39,10 @@ const apiKey = '46D809CD-945C-46CB-A582-8D83B7F649C0';
 class CoinData {
   Future getCoinData(String? selectedCurrency) async {
     Map<String, String> cryptoPrices = {};
+    sleep(seconds: 5);
     for (String crypto in cryptoList) {
-      String requestURL = '$coinAPIURL/BTC/$selectedCurrency?apikey=$apiKey';
+      String requestURL =
+          '$coinAPIURL/$crypto/$selectedCurrency?apikey=$apiKey';
       http.Response response = await http.get(Uri.parse(requestURL));
       if (response.statusCode == 200) {
         var decodedData = jsonDecode(response.body);

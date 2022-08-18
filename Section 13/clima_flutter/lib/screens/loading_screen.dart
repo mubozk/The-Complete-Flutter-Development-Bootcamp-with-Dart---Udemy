@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:clima_flutter/screens/location_screen.dart';
 
@@ -20,7 +22,6 @@ class _LoadingScreenState extends State<LoadingScreen> {
 
   void getLocationData() async {
     var weatherData = await WeatherModel().getLocationWeather();
-
     Navigator.push(context, MaterialPageRoute(builder: (context) {
       return LocationScreen(
         locationWeather: weatherData,
@@ -33,7 +34,7 @@ class _LoadingScreenState extends State<LoadingScreen> {
     return Scaffold(
       body: Center(
         child: SpinKitDoubleBounce(
-          color: Colors.white,
+          color: Colors.purple,
           size: 100.0,
         ),
       ),

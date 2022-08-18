@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flash_chat/screens/login_screen.dart';
 import 'package:flash_chat/screens/registration_screen.dart';
-
+import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:flash_chat/components/rounded_button.dart';
 class WelcomeScreen extends StatefulWidget {
   static String id = "welcome_screen";
 
@@ -19,10 +20,15 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     // TODO: implement initState
     super.initState();
 
-    controller = AnimationController(vsync: this, duration: Duration(seconds: 1),); // upperbound 100
-    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white).animate(controller);
+    controller = AnimationController(
+      vsync: this,
+      duration: Duration(seconds: 1),
+    ); // upperbound 100
+    animation = ColorTween(begin: Colors.blueGrey, end: Colors.white)
+        .animate(controller);
     // animation = CurvedAnimation(parent: controller, curve: Curves.decelerate);
-    controller.forward(); // you can make it go backwards by writing reverse instead of forward // reverse(from:1.0);
+    controller
+        .forward(); // you can make it go backwards by writing reverse instead of forward // reverse(from:1.0);
     // animation.addStatusListener((status) {
     //   if (status == AnimationStatus.completed) {
     //     controller.reverse(from: 1.0);
@@ -32,7 +38,7 @@ class _WelcomeScreenState extends State<WelcomeScreen>
     // });
     controller.addListener(() {
       setState(() {});
-      print(controller.value);
+      // print(controller.value);
     });
   }
 
@@ -62,60 +68,39 @@ class _WelcomeScreenState extends State<WelcomeScreen>
                     height: 60, //                     height: controller.value,
                   ),
                 ),
-                Text(
-                  'FLASH CHAT', //  '${controller.value.toInt()}%',
-                  style: TextStyle(
-                    color: Colors.blueGrey,
-                    fontSize: 45.0,
-                    fontWeight: FontWeight.w900,
-                  ),
+                AnimatedTextKit(
+                  animatedTexts: [
+                    TypewriterAnimatedText(
+                      'FLASH CHAT',
+                      textStyle: TextStyle(
+                        color: Colors.blueGrey,
+                        fontSize: 40.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ], //  '${controller.value.toInt()}%',
                 ),
               ],
             ),
             SizedBox(
               height: 48.0,
             ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                elevation: 5.0,
-                color: Colors.lightBlueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to login screen.
-                    Navigator.pushNamed(context, LoginScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Log In',
-                  ),
-                ),
-              ),
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(vertical: 16.0),
-              child: Material(
-                color: Colors.blueAccent,
-                borderRadius: BorderRadius.circular(30.0),
-                elevation: 5.0,
-                child: MaterialButton(
-                  onPressed: () {
-                    //Go to registration screen.
-                    Navigator.pushNamed(context, RegistrationScreen.id);
-                  },
-                  minWidth: 200.0,
-                  height: 42.0,
-                  child: Text(
-                    'Register',
-                  ),
-                ),
-              ),
-            ),
+            RoundedButton(
+                colour: Colors.lightBlueAccent,
+                title: 'LOG IN',
+                onPressed: () {
+                  Navigator.pushNamed(context, LoginScreen.id);
+                }),
+            RoundedButton(
+                colour: Colors.blueAccent,
+                title: 'REGISTER',
+                onPressed: () {
+                  (Navigator.pushNamed(context, RegistrationScreen.id));
+                }),
           ],
         ),
       ),
     );
   }
 }
+

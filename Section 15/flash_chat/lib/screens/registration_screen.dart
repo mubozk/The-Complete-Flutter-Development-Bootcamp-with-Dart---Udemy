@@ -3,6 +3,7 @@ import 'package:flash_chat/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'chat_screen.dart';
+
 class RegistrationScreen extends StatefulWidget {
   static String id = 'registration_screen';
 
@@ -66,15 +67,16 @@ class _RegistrationScreenState extends State<RegistrationScreen> {
                 colour: Colors.blueAccent,
                 title: 'Register',
                 onPressed: () async {
-                  print('bbbbbbbb');
+                  print('define error');
                   final newUser = await _auth.createUserWithEmailAndPassword(
                       email: email, password: password);
                   try {
                     if (newUser != null) {
+                      print('statement error');
                       Navigator.pushNamed(context, ChatScreen.id);
                     }
-                  }
-                  catch (e) {
+                  } catch (e) {
+                    print('catch error');
                     print(e);
                   }
                 }),

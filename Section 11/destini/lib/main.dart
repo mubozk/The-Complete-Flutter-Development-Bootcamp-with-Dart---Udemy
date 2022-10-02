@@ -48,17 +48,22 @@ class _StoryPageState extends State<StoryPage> {
               ),
               Expanded(
                 flex: 2,
-                child: FlatButton(
-                  onPressed: () {
-                    setState(() {
-                      storyBrain.nextStory(1);
-                    });
-                  },
-                  color: Colors.red,
-                  child: Text(
-                    storyBrain.getChoice1(),
-                    style: TextStyle(
-                      fontSize: 20.0,
+                child: Padding(
+                  padding: EdgeInsets.all(15),
+                  child: Container(
+                    color: Colors.red,
+                    child: GestureDetector(
+                      onTap: () {
+                        setState(() {
+                          storyBrain.nextStory(1);
+                        });
+                      },
+                      child: Text(
+                        storyBrain.getChoice1(),
+                        style: TextStyle(
+                          fontSize: 20.0,
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -70,17 +75,22 @@ class _StoryPageState extends State<StoryPage> {
                 flex: 2,
                 child: Visibility(
                   visible: storyBrain.buttonShouldBeVisible(),
-                  child: FlatButton(
-                    onPressed: () {
-                      setState(() {
-                        storyBrain.nextStory(2);
-                      });
-                    },
-                    color: Colors.blue,
-                    child: Text(
-                      storyBrain.getChoice2(),
-                      style: TextStyle(
-                        fontSize: 20.0,
+                  child: Padding(
+                    padding: EdgeInsets.all(15),
+                    child: Container(
+                      color: Colors.blue,
+                      child: GestureDetector(
+                        onTap: () {
+                          setState(() {
+                            storyBrain.nextStory(2);
+                          });
+                        },
+                        child: Text(
+                          storyBrain.getChoice2(),
+                          style: TextStyle(
+                            fontSize: 20.0,
+                          ),
+                        ),
                       ),
                     ),
                   ),

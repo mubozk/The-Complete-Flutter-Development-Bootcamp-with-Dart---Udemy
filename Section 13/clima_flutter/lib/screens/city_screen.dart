@@ -25,8 +25,8 @@ class _CityScreenState extends State<CityScreen> {
             children: <Widget>[
               Align(
                 alignment: Alignment.topLeft,
-                child: FlatButton(
-                  onPressed: () {
+                child: GestureDetector(
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   child: Icon(
@@ -47,8 +47,8 @@ class _CityScreenState extends State<CityScreen> {
                   },
                 ),
               ),
-              FlatButton(
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   Navigator.pop(context, cityName);
                 },
                 child: Text(

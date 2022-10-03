@@ -14,7 +14,6 @@ class CalculatorBrain {
     print(bmi);
     return bmi.toStringAsFixed(1);
   }
-
   String getResult() {
     if (bmi >= 25) {
       return 'Overweight';
@@ -24,7 +23,6 @@ class CalculatorBrain {
       return 'Underweight';
     }
   }
-
   String getInterpretation() {
     if (bmi >= 25) {
       return ' You have a higher than normal body weight. Try to exercise more';

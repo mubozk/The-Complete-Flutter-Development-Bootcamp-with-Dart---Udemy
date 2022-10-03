@@ -69,8 +69,8 @@ class _LocationScreenState extends State<LocationScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   // currnet location updates in this button ->
-                  FlatButton(
-                    onPressed: () async {
+                  GestureDetector(
+                    onTap: () async {
                       var weatherData = await weather.getLocationWeather();
                       updateUI(weatherData);
                     },
@@ -79,8 +79,8 @@ class _LocationScreenState extends State<LocationScreen> {
                       size: 50.0,
                     ),
                   ),
-                  FlatButton(
-                    onPressed: () async {
+                  GestureDetector(
+                    onTap: () async {
                       var typedName = await Navigator.push(
                         context,
                         MaterialPageRoute(

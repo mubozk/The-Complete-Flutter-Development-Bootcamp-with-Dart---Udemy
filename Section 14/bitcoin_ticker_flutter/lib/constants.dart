@@ -1,1 +1,1 @@
-const kApiKey = '46D809CD-945C-46CB-A582-8D83B7F649C0';
+const kApiKey = 'your_api_key';
